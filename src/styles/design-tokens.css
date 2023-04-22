@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'SweetSensations';
+  src: url('../../public/fonts/sweet-sensations-font/SweetSensationsPersonalUse-lRgq.ttf')
+    format('truetype');
+}
+
+:root {
+  --max-width: 1100px;
+  --font-family: 'Helvetica', 'Arial', sans-serif;
+  --font-family-header: 'SweetSensations';
+
+  /* Sizes */
+  --size-4xs: 1px;
+  --size-3xs: 2px;
+  --size-2xs: 4px;
+  --size-xs: 8px;
+  --size-sm: 14px;
+  --size-md: 18px;
+  --size-lg: 24px;
+  --size-xl: 32px;
+  --size-2xl: 48px;
+  --size-3xl: 72px;
+  --size-4xl: 96px;
+
+  /* font sizes */
+  --font-size-1: 1rem;
+  --font-size-2: 1.618rem;
+  --font-size-3: 2.618rem;
+  --font-size-4: 4.236rem;
+  --font-size-5: 6.854rem;
+  --font-size-6: 11.089rem;
+
+  /* colors */
+  --color-primary: #e05628;
+  --color-header: var(--color-primary);
+}
