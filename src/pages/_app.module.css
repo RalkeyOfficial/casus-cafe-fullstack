@@ -1,4 +1,15 @@
+.container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.container > *:not(:last-child) {
+  margin-block-end: var(--size-2xl);
+}
+
 .content {
   max-width: var(--max-width);
   margin: auto;
+  padding: var(--size-md);
+  margin-block-end: var(--footer-size);
 }

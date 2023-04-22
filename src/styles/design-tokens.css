@@ -33,4 +33,6 @@
   /* colors */
   --color-primary: #e05628;
   --color-header: var(--color-primary);
+
+  --footer-size: 20rem;
 }

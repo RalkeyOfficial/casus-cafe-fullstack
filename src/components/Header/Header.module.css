@@ -1,16 +1,17 @@
 .container {
   max-width: 100%;
-  padding: var(--size-md);
   background-color: var(--color-header);
-  padding-bottom: var(--size-3xl);
 }
 
 .content {
   max-width: var(--max-width);
+  padding: var(--size-md);
+  padding-bottom: var(--size-3xl);
   margin: auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: var(--size-lg);
+  color: white;
 }
 
 .content a {

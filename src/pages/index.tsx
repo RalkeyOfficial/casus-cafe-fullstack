@@ -1,7 +1,3 @@
-export default function Home() {
-  return (
-    <>
-      <p>hello world</p>
-    </>
-  );
-}
+import Home from '@/templates/home/Home';
+
+export default Home;
