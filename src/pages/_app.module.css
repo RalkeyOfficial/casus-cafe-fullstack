@@ -1,5 +1,4 @@
 .container {
-  position: relative;
   min-height: 100vh;
 }
 
@@ -11,5 +10,5 @@
   max-width: var(--max-width);
   margin: auto;
   padding: var(--size-md);
-  margin-block-end: var(--footer-size);
+  margin-block-end: 16rem !important;
 }

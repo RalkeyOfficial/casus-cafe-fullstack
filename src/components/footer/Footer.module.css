@@ -1,13 +1,10 @@
 .container {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   height: var(--footer-size);
-  z-index: 0;
 }
 
 .shapedividers {
-  background-color: #1e1e1e;
+  background-color: var(--color-footer);
   color: white;
   height: 100%;
 }
@@ -63,6 +60,12 @@
   color: white;
   text-decoration: underline;
   text-underline-offset: 6px;
+}
+
+.adminLogin {
+  position: absolute;
+  bottom: var(--size-xs);
+  right: var(--size-xs);
 }
 
 /* shape divider */

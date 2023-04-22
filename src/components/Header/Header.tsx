@@ -12,7 +12,7 @@ const Header: React.FC = () => {
     <header className={clsx(styles.container, styles.shapedividers)}>
       <div className={styles.content}>
         <Link href="/">
-          <p className={styles.header}>Casus Cafe</p>
+          <p className={styles.header}>EasyTiger Cafe</p>
         </Link>
         {adminPage && <p>Admin Panel v1.0.0</p>}
       </div>

@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
       <div className={styles.shapedividers}>
         <div className={styles.content}>
           <div>
-            <p className={styles.header}>Casus Cafe</p>
+            <p className={styles.header}>EasyTiger Cafe</p>
             <div className={styles.socialMediaContainer}>
               <Link href="#" target="_blank" className={styles.socialMedia}>
                 <FontAwesomeIcon icon={faInstagram} />
@@ -42,6 +42,8 @@ const Footer: React.FC = () => {
             <p>+31 06 123456789</p>
           </div>
         </div>
+
+        <div className={styles.adminLogin}>admin login</div>
       </div>
     </footer>
   );
