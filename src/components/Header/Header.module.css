@@ -21,7 +21,8 @@
 .content .header {
   font-family: var(--font-family-header);
   color: white;
-  letter-spacing: var(--size-2xs);
+  letter-spacing: var(--size-3xs);
+  font-size: var(--font-size-3);
 }
 
 /* custom shape */

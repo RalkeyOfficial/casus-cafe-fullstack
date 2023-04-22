@@ -16,7 +16,53 @@
   max-width: var(--max-width);
   margin: auto;
   padding: 1rem;
-  padding-top: var(--size-3xl);
+  padding-top: var(--size-4xl);
+
+  display: flex;
+  gap: var(--size-xl);
+}
+.content > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--size-md);
+}
+
+.header {
+  font-family: var(--font-family-header);
+  color: white;
+  letter-spacing: var(--size-3xs);
+  font-size: var(--font-size-3);
+}
+
+.socialMediaContainer {
+  display: flex;
+  gap: var(--size-xs);
+}
+
+.socialMedia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: var(--size-2xl);
+  height: var(--size-2xl);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.socialMedia > * {
+  width: var(--size-lg);
+  height: var(--size-lg);
+}
+
+.footerHeader {
+  font-size: 1.3rem;
+}
+
+.links > a {
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
 /* shape divider */

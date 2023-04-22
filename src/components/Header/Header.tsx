@@ -9,14 +9,14 @@ const Header: React.FC = () => {
   const adminPage = pathname.includes('/admin');
 
   return (
-    <div className={clsx(styles.container, styles.shapedividers)}>
+    <header className={clsx(styles.container, styles.shapedividers)}>
       <div className={styles.content}>
         <Link href="/">
-          <h4 className={styles.header}>Casus Cafe</h4>
+          <p className={styles.header}>Casus Cafe</p>
         </Link>
         {adminPage && <p>Admin Panel v1.0.0</p>}
       </div>
-    </div>
+    </header>
   );
 };
 
