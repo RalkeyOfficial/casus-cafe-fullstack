@@ -1,0 +1,44 @@
+.fieldset {
+  width: 100%;
+  padding: var(--size-lg);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius);
+}
+.fieldset > legend {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.form > *:not(:last-child) {
+  margin-block-end: var(--size-lg);
+}
+.form > * {
+  display: flex;
+  flex-direction: column;
+}
+
+.form > * > select,
+.form > * > input {
+  padding: var(--size-xs);
+  border: 1px solid var(--color-primary);
+}
+.form > * > select:focus,
+.form > * > input:focus {
+  outline: 1px solid var(--color-primary);
+}
+
+.form > button {
+  padding: var(--size-xs) var(--size-sm);
+  background-color: var(--color-primary);
+  border: none;
+  color: white;
+  font-weight: bold;
+  width: fit-content;
+  margin-top: auto;
+}
