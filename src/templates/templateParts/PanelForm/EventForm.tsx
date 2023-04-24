@@ -15,8 +15,8 @@ const EventForm: React.FC = () => {
   const _useEvents = useEvent(queryClient);
   const createEvent = _useEvents.create();
 
-  const onSubmit = (data: object) => {
-    const payload = { ...data };
+  const onSubmit = (data: any) => {
+    const payload = { ...data, time: data.time + ':00' };
 
     console.log(payload);
 
@@ -29,24 +29,20 @@ const EventForm: React.FC = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div>
           <label>Event datum</label>
-          <input type="date" {...register('datum', { required: true })} />
-          <ErrorMessage errors={errors} name="datum" message="datum mag niet leeg zijn" />
+          <input type="date" {...register('date', { required: true })} />
+          <ErrorMessage errors={errors} name="date" message="datum mag niet leeg zijn" />
         </div>
 
         <div>
           <label>Event aanvangstijd</label>
-          <input type="time" {...register('aanvangstijd', { required: true })} />
-          <ErrorMessage
-            errors={errors}
-            name="aanvangstijd"
-            message="aanvangstijd mag niet leeg zijn"
-          />
+          <input type="time" {...register('time', { required: true })} />
+          <ErrorMessage errors={errors} name="time" message="aanvangstijd mag niet leeg zijn" />
         </div>
 
         <div>
           <label>Event Naam</label>
-          <input type="text" {...register('eventNaam', { required: true })} />
-          <ErrorMessage errors={errors} name="eventNaam" message="event naam mag niet leeg zijn" />
+          <input type="text" {...register('name', { required: true })} />
+          <ErrorMessage errors={errors} name="name" message="event naam mag niet leeg zijn" />
         </div>
 
         <div>
@@ -55,11 +51,11 @@ const EventForm: React.FC = () => {
             placeholder="000.00"
             type="number"
             step="any"
-            {...register('entreePrijs', { required: true, pattern: /^(([1-9]\d*)|0)?\.\d{1,2}$/g })}
+            {...register('price', { required: true, pattern: /^(([1-9]\d*)|0)?\.\d{1,2}$/g })}
           />
           <ErrorMessage
             errors={errors}
-            name="entreePrijs"
+            name="price"
             message="de entree prijs mag niet beginnen met een 0 (behalve als het 0 euro is), het moet een decimal punt met 2 numbers hebben (.23)"
           />
         </div>

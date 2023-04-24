@@ -20,7 +20,7 @@ class ConnectDataBase {
   sendExecuteQuery = async (executeQuery: string, data?: any[]) => {
     const connection = await this.createConnection();
 
-    const [results, fields] = await connection.execute(executeQuery);
+    const [results, fields] = await connection.execute(executeQuery, data);
 
     return results;
   };

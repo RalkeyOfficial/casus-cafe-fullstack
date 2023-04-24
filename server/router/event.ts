@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { z } from 'zod';
 import ConnectDataBase from '../DB/mysql_connection';
 const express = require('express');
 const router = express.Router();
@@ -6,10 +7,24 @@ const router = express.Router();
 const connectDataBase = new ConnectDataBase('easytiger_db');
 
 router.post('/event', async (req: Request, res: Response, next: Function) => {
-  console.log(req.body);
+  // TODO - add "is logged in" verification
+
+  const eventSchema = z.object({
+    name: z.string(),
+    price: z.string().regex(/^(([1-9]\d*)|0)?\.\d{1,2}$/),
+    time: z.string().regex(/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/),
+    date: z.string().regex(/^(19[0-9]{2}|[2-3][0-9]{3})-(0[1-9]|1[012])-([123]0|[012][1-9]|31)$/),
+  });
+
+  const result = eventSchema.safeParse(req.body);
+
+  if (!result.success) return res.send(result.error);
 
   try {
-    const results = await connectDataBase.sendExecuteQuery('show tables');
+    const results = await connectDataBase.sendExecuteQuery(
+      'INSERT INTO evenement (naam, datum, aanvangstijd, entree_kosten) VALUES (?, ?, ?, ?)',
+      [result.data.name, result.data.date, result.data.time, result.data.price]
+    );
     return res.send(results);
   } catch (error) {
     return next(error);
