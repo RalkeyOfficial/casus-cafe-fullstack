@@ -7,6 +7,10 @@ export default class APIService {
   public get BaseClient(): AxiosInstance {
     return axios.create({
       baseURL: 'http://localhost:3001/api/',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
     });
   }
 
