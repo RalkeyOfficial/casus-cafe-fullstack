@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import styles from "./Form.module.css"
+import styles from './Form.module.css';
+import { useQueryClient } from '@tanstack/react-query';
+import { useEvent } from '@/hooks/event';
 
 const EventForm: React.FC = () => {
   const {
@@ -9,7 +11,17 @@ const EventForm: React.FC = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: object) => console.log(data);
+  const queryClient = useQueryClient();
+  const _useEvents = useEvent(queryClient);
+  const createEvent = _useEvents.create();
+
+  const onSubmit = (data: object) => {
+    const payload = { ...data };
+
+    console.log(payload);
+
+    createEvent.mutate({ payload });
+  };
 
   return (
     <fieldset className={styles.fieldset}>

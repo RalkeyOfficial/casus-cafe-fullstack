@@ -6,11 +6,11 @@ const router = express.Router();
 const connectDataBase = new ConnectDataBase('easytiger_db');
 
 router.post('/event', async (req: Request, res: Response, next: Function) => {
-  console.log(req);
+  console.log(req.body, req.params, req.query);
 
   try {
-    const fesults = await connectDataBase.sendExecuteQuery('show tables');
-    return res.send(fesults);
+    const results = await connectDataBase.sendExecuteQuery('show tables');
+    return res.send(results);
   } catch (error) {
     return next(error);
   }

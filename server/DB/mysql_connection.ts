@@ -8,13 +8,17 @@ class ConnectDataBase {
     this.database = database;
   }
 
-  sendExecuteQuery = async (executeQuery: string, data?: any[]) => {
-    const connection = await mysql.createConnection({
+  private createConnection = async () => {
+    return await mysql.createConnection({
       host: process.env.DATABASE_URL,
       user: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: this.database,
     });
+  };
+
+  sendExecuteQuery = async (executeQuery: string, data?: any[]) => {
+    const connection = await this.createConnection();
 
     const [results, fields] = await connection.execute(executeQuery);
 
