@@ -19,6 +19,8 @@ router.post('/joinTable', async (req: Request, res: Response, next: Function) =>
   if (!result.success) return res.send(result.error);
 
   try {
+    console.log(req.body);
+
     await connectDataBase.sendPreparedPoolQueries([
       'INSERT INTO evenement_has_band (evenement_idevenement, band_idband) VALUES(?, ?)',
       [req.body.event, req.body.band],

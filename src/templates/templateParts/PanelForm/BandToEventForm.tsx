@@ -37,9 +37,9 @@ const BandToEventForm: React.FC = () => {
           {getEvent.isLoading && <Skeleton height="30px" />}
           {getEvent.isSuccess && (
             <select {...register('event', { required: true })}>
-              {getEvent.data.map((genre: any) => (
-                <option key={genre.idevenement} value={genre.idevenement}>
-                  {genre.naam}
+              {getEvent.data.map((event: any) => (
+                <option key={event.id} value={event.id}>
+                  {event.naam}
                 </option>
               ))}
             </select>
