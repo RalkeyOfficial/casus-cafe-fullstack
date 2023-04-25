@@ -14,6 +14,7 @@ class ConnectDataBase {
       user: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: this.database,
+	  multipleStatements: true,
     });
   };
 
