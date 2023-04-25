@@ -18,7 +18,7 @@ router.post('/genre', async (req: Request, res: Response, next: Function) => {
   if (!verifiedBody.success) return res.send(verifiedBody.error);
 
   try {
-    const results = await connectDataBase.sendExecuteQuery('INSERT INTO genre (naam) VALUES (?)', [
+    const results = await connectDataBase.sendPreparedQuery('INSERT INTO genre (naam) VALUES (?)', [
       verifiedBody.data.name,
     ]);
     return res.json(results);
@@ -29,7 +29,7 @@ router.post('/genre', async (req: Request, res: Response, next: Function) => {
 
 router.get('/genre', async (req: Request, res: Response, next: Function) => {
   try {
-    const results = await connectDataBase.sendExecuteQuery('SELECT * FROM genre');
+    const results = await connectDataBase.sendPreparedQuery('SELECT * FROM genre');
 
     const _results: string[] = [];
     results.map((result: any) => {

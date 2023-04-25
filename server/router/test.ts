@@ -7,7 +7,7 @@ const connectDataBase = new ConnectDataBase('easytiger_db');
 
 router.get('/test', async (req: Request, res: Response, next: Function) => {
   try {
-    const results = await connectDataBase.sendExecuteQuery('show tables');
+    const results = await connectDataBase.sendPreparedQuery('show tables');
     return res.send(results);
   } catch (error) {
     return next(error);

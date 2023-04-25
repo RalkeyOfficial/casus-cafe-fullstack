@@ -19,11 +19,10 @@ router.post('/band', async (req: Request, res: Response, next: Function) => {
   if (!result.success) return res.send(result.error);
 
   try {
-    await connectDataBase.sendExecuteQuery(
-      `INSERT INTO band (naam) VALUES (?);
-	  SET @band_id = LAST_INSERT_ID();
-	  INSERT INTO band_has_genre (band_idband, genre_naam) VALUES(@band_id, ?);`,
-      [result.data.name, result.data.genre]
+    await connectDataBase.sendPreparedPoolQueries(
+      ['INSERT INTO band (naam) VALUES (?)', [result.data.name]],
+      ['SET @band_id = LAST_INSERT_ID()'],
+      ['INSERT INTO band_has_genre (band_idband, genre_naam) VALUES(@band_id, ?)', [result.data.genre]]
     );
 
     return res.status(200);

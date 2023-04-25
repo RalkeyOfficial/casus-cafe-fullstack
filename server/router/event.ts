@@ -21,7 +21,7 @@ router.post('/event', async (req: Request, res: Response, next: Function) => {
   if (!result.success) return res.send(result.error);
 
   try {
-    const results = await connectDataBase.sendExecuteQuery(
+    const results = await connectDataBase.sendPreparedQuery(
       'INSERT INTO evenement (naam, datum, aanvangstijd, entree_kosten) VALUES (?, ?, ?, ?)',
       [result.data.name, result.data.date, result.data.time, result.data.price]
     );
