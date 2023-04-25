@@ -21,7 +21,8 @@ router.post('/genre', async (req: Request, res: Response, next: Function) => {
     const results = await connectDataBase.sendPreparedQuery('INSERT INTO genre (naam) VALUES (?)', [
       verifiedBody.data.name,
     ]);
-    return res.json(results);
+
+    return res.send(verifiedBody.data.name);
   } catch (error) {
     return next(error);
   }

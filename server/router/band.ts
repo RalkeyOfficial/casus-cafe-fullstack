@@ -28,7 +28,12 @@ router.post('/band', async (req: Request, res: Response, next: Function) => {
       ]
     );
 
-    return res.status(200);
+    const newData = await connectDataBase.sendPreparedQuery(`SELECT * FROM band 
+		RIGHT OUTER JOIN band_has_genre
+		ON band.idband = band_has_genre.band_idband
+	`);
+
+    return res.json(newData);
   } catch (error) {
     return next(error);
   }

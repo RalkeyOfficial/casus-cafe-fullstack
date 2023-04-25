@@ -32,20 +32,70 @@ router.post('/event', async (req: Request, res: Response, next: Function) => {
 });
 
 router.get('/event', async (req: Request, res: Response, next: Function) => {
+  // fuck fuck fuck fuck fuck
+
   try {
     const results = await connectDataBase.sendPreparedQuery(`
 		SELECT 
 			*, 
 			evenement.naam, 
-			band.naam AS band_naam 
+			evenement.idevenement AS id,
+			band.naam AS band_naam,
+			genre.naam AS genre_naam 
 		FROM evenement 
-		INNER JOIN evenement_has_band
+		
+		LEFT JOIN evenement_has_band
 			ON evenement.idevenement = evenement_has_band.evenement_idevenement
-		INNER JOIN band
+		LEFT JOIN band
 			ON evenement_has_band.band_idband = band.idband
+
+		LEFT JOIN band_has_genre
+			ON band.idband = band_has_genre.band_idband
+		LEFT JOIN genre
+			ON band_has_genre.genre_naam = genre.naam
 	`);
 
-    return res.json(results);
+    // format results in a way that makes sorta sense
+    /*
+      {
+        ...rest of the results,
+        bands: [
+          {
+            band: "band name",
+            genre: "genre name"
+          },
+          {
+            band: "band name",
+            genre: "genre name"
+          }
+        ]
+      }
+	*/
+    const _results = results.map((result: any) => {
+      const newResult = {
+        ...result,
+        bands: results
+          .filter(({ id }: any) => id === result.id)
+          .map((result: any) => {
+            if (!result.band_naam) return;
+            return { band: result.band_naam, genre: result.genre_naam };
+          }),
+      };
+
+      delete newResult.genre_naam;
+      delete newResult.band_naam;
+      delete newResult.idevenement;
+
+      return newResult;
+    });
+
+    // filter duplicate objects with same ID
+    const ids = _results.map((result: any) => result.id);
+    const _resultsFiltered = _results.filter(
+      ({ id }: any, index: any) => !ids.includes(id, index + 1)
+    );
+
+    return res.json(_resultsFiltered);
   } catch (error) {
     return next(error);
   }

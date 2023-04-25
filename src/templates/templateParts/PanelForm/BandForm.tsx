@@ -11,7 +11,7 @@ const BandForm: React.FC = () => {
   const {
     register,
     handleSubmit,
-	reset,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -32,7 +32,7 @@ const BandForm: React.FC = () => {
     console.log(data);
 
     createBand.mutate({ payload: data });
-	reset();
+    reset();
   };
 
   return (
@@ -52,6 +52,7 @@ const BandForm: React.FC = () => {
             <select {...register('genre', { required: true })}>
               {getGenre.data.map((genre: any) => (
                 <option key={genre} value={genre}>
+                  {console.log(genre)}
                   {genre}
                 </option>
               ))}
