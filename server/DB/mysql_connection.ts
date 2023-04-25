@@ -34,20 +34,6 @@ class ConnectDataBase {
     return results;
   };
 
-  sendPreparedPoolQueries = async (...preparedQueryAndData: [string, any[]?][]) => {
-    const pool = mysql.createPool({
-      host: process.env.DATABASE_URL,
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
-      database: this.database,
-    });
-    const promisePool = pool.promise();
-
-    for (let queryAndDate of preparedQueryAndData) {
-      await promisePool.execute(queryAndDate[0], queryAndDate[1]);
-    }
-  };
-
   sendPoolQueries = async (...queries: string[]) => {
     const pool = mysql.createPool({
       host: process.env.DATABASE_URL,
@@ -59,6 +45,20 @@ class ConnectDataBase {
 
     for (let query of queries) {
       await promisePool.query(query);
+    }
+  };
+
+  sendPreparedPoolQueries = async (...preparedQueryAndData: [string, any[]?][]) => {
+    const pool = mysql.createPool({
+      host: process.env.DATABASE_URL,
+      user: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      database: this.database,
+    });
+    const promisePool = pool.promise();
+
+    for (let queryAndDate of preparedQueryAndData) {
+      await promisePool.execute(queryAndDate[0], queryAndDate[1]);
     }
   };
 }
