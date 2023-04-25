@@ -11,6 +11,7 @@ const BandForm: React.FC = () => {
   const {
     register,
     handleSubmit,
+	reset,
     formState: { errors },
   } = useForm();
 
@@ -31,6 +32,7 @@ const BandForm: React.FC = () => {
     console.log(data);
 
     createBand.mutate({ payload: data });
+	reset();
   };
 
   return (

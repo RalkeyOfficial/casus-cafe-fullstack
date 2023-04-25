@@ -22,10 +22,26 @@ router.post('/band', async (req: Request, res: Response, next: Function) => {
     await connectDataBase.sendPreparedPoolQueries(
       ['INSERT INTO band (naam) VALUES (?)', [result.data.name]],
       ['SET @band_id = LAST_INSERT_ID()'],
-      ['INSERT INTO band_has_genre (band_idband, genre_naam) VALUES(@band_id, ?)', [result.data.genre]]
+      [
+        'INSERT INTO band_has_genre (band_idband, genre_naam) VALUES(@band_id, ?)',
+        [result.data.genre],
+      ]
     );
 
     return res.status(200);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+router.get('/band', async (req: Request, res: Response, next: Function) => {
+  try {
+    const results = await connectDataBase.sendPreparedQuery(`SELECT * FROM band 
+		RIGHT OUTER JOIN band_has_genre
+		ON band.idband = band_has_genre.band_idband
+	`);
+
+    return res.json(results);
   } catch (error) {
     return next(error);
   }

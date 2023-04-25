@@ -31,4 +31,24 @@ router.post('/event', async (req: Request, res: Response, next: Function) => {
   }
 });
 
+router.get('/event', async (req: Request, res: Response, next: Function) => {
+  try {
+    const results = await connectDataBase.sendPreparedQuery(`
+		SELECT 
+			*, 
+			evenement.naam, 
+			band.naam AS band_naam 
+		FROM evenement 
+		INNER JOIN evenement_has_band
+			ON evenement.idevenement = evenement_has_band.evenement_idevenement
+		INNER JOIN band
+			ON evenement_has_band.band_idband = band.idband
+	`);
+
+    return res.json(results);
+  } catch (error) {
+    return next(error);
+  }
+});
+
 module.exports = router;

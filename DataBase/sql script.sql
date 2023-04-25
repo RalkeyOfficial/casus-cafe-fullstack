@@ -91,8 +91,8 @@ DROP TABLE IF EXISTS `easytiger_db`.`evenement_has_band` ;
 CREATE TABLE IF NOT EXISTS `easytiger_db`.`evenement_has_band` (
   `evenement_idevenement` INT NOT NULL,
   `band_idband` INT NOT NULL,
-  `aantal_sets` INT NOT NULL,
-  `duur_set` INT NOT NULL,
+  `aantal_sets` INT NULL,
+  `duur_set` INT NULL,
   PRIMARY KEY (`evenement_idevenement`, `band_idband`),
   INDEX `fk_evenement_has_band_band1_idx` (`band_idband` ASC),
   INDEX `fk_evenement_has_band_evenement1_idx` (`evenement_idevenement` ASC),
