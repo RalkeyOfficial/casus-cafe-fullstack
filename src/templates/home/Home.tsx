@@ -1,3 +1,4 @@
+import Agenda from '../templateParts/homeAgenda/Agenda';
 import styles from './Home.module.css';
 
 const Home: React.FC = () => {
@@ -24,54 +25,8 @@ const Home: React.FC = () => {
           geweldige live muziek of tijdens een gezellige avond met vrienden.
         </article>
       </div>
-      <div className={styles.agendaContainer}>
-        <h5>Evenementen Agenda</h5>
-        <div className={styles.agendaContent}>
-          {/*  */}
-          <div className={styles.agendaItem}>
-            <div className={styles.agendaItemHead}>
-              <div>24 April - 17:00</div>
-              <h6>Event Naam</h6>
-              <div>$14.99</div>
-            </div>
-            <div className={styles.agendaItemBand}>
-              <h6>AC/DC</h6>
-              <div>
-                <div className={styles.genre}>Rock&Roll</div>
-              </div>
-            </div>
-            <div className={styles.agendaItemBand}>
-              <h6>The Rolling Stones</h6>
-              <div>
-                <div className={styles.genre}>Rock</div>
-                <div className={styles.genre}>Blues</div>
-              </div>
-            </div>
-          </div>
-          {/*  */}
-          <div className={styles.agendaItem}>
-            <div className={styles.agendaItemHead}>
-              <div>26 April - 17:00</div>
-              <h6>Event Naam</h6>
-              <div>$14.99</div>
-            </div>
-            <div className={styles.agendaItemBand}>
-              <h6>The Beatles</h6>
-              <div>
-                <div className={styles.genre}>Psychedelic rock</div>
-                <div className={styles.genre}>Blues</div>
-              </div>
-            </div>
-            <div className={styles.agendaItemBand}>
-              <h6>Metallica</h6>
-              <div>
-                <div className={styles.genre}>Metal</div>
-              </div>
-            </div>
-          </div>
-          {/*  */}
-        </div>
-      </div>
+
+      <Agenda />
     </div>
   );
 };

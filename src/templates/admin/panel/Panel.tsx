@@ -1,8 +1,8 @@
-import EventForm from '@/templates/templateParts/PanelForm/EventForm';
+import EventForm from '@/templates/templateParts/panelForm/EventForm';
 import styles from './Panel.module.css';
-import BandForm from '@/templates/templateParts/PanelForm/BandForm';
-import BandToEventForm from '@/templates/templateParts/PanelForm/BandToEventForm';
-import GenreForm from '@/templates/templateParts/PanelForm/GenreForm';
+import BandForm from '@/templates/templateParts/panelForm/BandForm';
+import BandToEventForm from '@/templates/templateParts/panelForm/BandToEventForm';
+import GenreForm from '@/templates/templateParts/panelForm/GenreForm';
 
 const Home: React.FC = () => {
   return (

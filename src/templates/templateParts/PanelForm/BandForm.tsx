@@ -29,8 +29,6 @@ const BandForm: React.FC = () => {
   }, [getGenre.isLoading]);
 
   const onSubmit = (data: object) => {
-    console.log(data);
-
     createBand.mutate({ payload: data });
     reset();
   };
@@ -52,7 +50,6 @@ const BandForm: React.FC = () => {
             <select {...register('genre', { required: true })}>
               {getGenre.data.map((genre: any) => (
                 <option key={genre} value={genre}>
-                  {console.log(genre)}
                   {genre}
                 </option>
               ))}

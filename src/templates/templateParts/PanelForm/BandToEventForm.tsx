@@ -25,8 +25,6 @@ const BandToEventForm: React.FC = () => {
   const getBand = _useBand.getAll();
 
   const onSubmit = (data: object) => {
-    console.log(data);
-
     joinBandToEvent.mutate({ payload: data });
   };
 
