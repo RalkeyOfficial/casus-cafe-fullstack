@@ -2,6 +2,8 @@ import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 // Resources
 import Event from './resources/event';
+import Genre from './resources/genre';
+import Band from './resources/band';
 
 export default class APIService {
   public get BaseClient(): AxiosInstance {
@@ -17,6 +19,14 @@ export default class APIService {
   // Resources
   public get Event(): Event {
     return new Event(this.BaseClient);
+  }
+
+  public get Genre(): Genre {
+    return new Genre(this.BaseClient);
+  }
+
+  public get Band(): Band {
+    return new Band(this.BaseClient);
   }
 }
 

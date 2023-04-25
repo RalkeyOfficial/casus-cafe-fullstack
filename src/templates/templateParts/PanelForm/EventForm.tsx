@@ -8,6 +8,7 @@ const EventForm: React.FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -18,9 +19,8 @@ const EventForm: React.FC = () => {
   const onSubmit = (data: any) => {
     const payload = { ...data, time: data.time + ':00' };
 
-    console.log(payload);
-
     createEvent.mutate({ payload });
+    reset();
   };
 
   return (
