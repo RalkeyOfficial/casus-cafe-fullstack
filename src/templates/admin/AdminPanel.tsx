@@ -1,9 +1,11 @@
+import Login from "./login/login";
 import Panel from './panel/Panel';
 
 const AdminPanel: React.FC = () => {
   return (
     <>
-      <Panel />
+		<Login />
+      {/* <Panel /> */}
     </>
   );
 };
