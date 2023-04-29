@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
-import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const Footer: React.FC = () => {
+  const { user } = useUser();
+
   return (
     <footer className={styles.container}>
       <div className={styles.shapedividers}>
@@ -43,7 +45,9 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className={styles.adminLogin}>admin login</div>
+        <div className={styles.adminLogin}>
+          <Link href="/admin">Admin {user ? 'panel' : 'Login'} </Link>
+        </div>
       </div>
     </footer>
   );

@@ -7,7 +7,8 @@ import styles from './_app.module.css';
 import Footer from '@/components/footer/Footer';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import 'react-loading-skeleton/dist/skeleton.css'
+import { UserProvider } from '@auth0/nextjs-auth0/client';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -20,14 +21,16 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <QueryClientProvider client={queryClient}>
-        <div className={styles.container}>
-          <Header />
-          <div className={styles.content}>
-            <Component {...pageProps} />
-            <ReactQueryDevtools initialIsOpen={false} />
+        <UserProvider>
+          <div className={styles.container}>
+            <Header />
+            <div className={styles.content}>
+              <Component {...pageProps} />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        </UserProvider>
       </QueryClientProvider>
     </>
   );

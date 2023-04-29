@@ -6,6 +6,8 @@ import Genre from './resources/genre';
 import Band from './resources/band';
 import JoinBandEvent from './resources/joinBandEvent';
 
+
+
 export default class APIService {
   public get BaseClient(): AxiosInstance {
     return axios.create({

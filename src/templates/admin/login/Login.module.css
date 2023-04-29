@@ -1,0 +1,22 @@
+.container {
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container > *:not(:last-child) {
+  margin-block-end: var(--size-lg);
+}
+
+.container > button {
+  padding: var(--size-sm) var(--size-lg);
+  background-color: var(--color-primary);
+  border: none;
+  font-weight: bold;
+  width: fit-content;
+}
+.container > button > a {
+  color: white;
+  text-decoration: none;
+}

@@ -68,6 +68,11 @@
   right: var(--size-xs);
 }
 
+.adminLogin > a {
+  color: rgb(155, 155, 155);
+  text-underline-offset: 2px;
+}
+
 /* shape divider */
 .shapedividers {
   overflow: hidden;
