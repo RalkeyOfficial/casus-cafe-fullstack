@@ -29,7 +29,7 @@ const BandToEventForm: React.FC = () => {
   };
 
   return (
-    <fieldset className={styles.fieldset} style={{ maxWidth: 516 }}>
+    <fieldset className={styles.fieldset}>
       <legend>Koppel Band aan Event</legend>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div>

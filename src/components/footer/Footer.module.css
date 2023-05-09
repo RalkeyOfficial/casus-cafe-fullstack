@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: var(--footer-size);
+  height: fit-content;
 }
 
 .shapedividers {
@@ -15,13 +15,26 @@
   padding: 1rem;
   padding-top: var(--size-4xl);
 
-  display: flex;
-  gap: var(--size-xl);
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  gap: var(--size-2xl);
 }
+@media only screen and (min-width: 768px) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .content {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 .content > div {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  min-width: 230px;
   gap: var(--size-md);
 }
 

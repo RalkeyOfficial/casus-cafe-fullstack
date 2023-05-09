@@ -1,9 +1,27 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
   gap: var(--size-xl);
+}
+
+.container > * {
+  width: 100%;
 }
 
 .mainContent {
   letter-spacing: 0.5px;
+  margin: auto;
+}
+
+@media only screen and (min-width: 992px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .container > * {
+    width: 50%;
+  }
 }
